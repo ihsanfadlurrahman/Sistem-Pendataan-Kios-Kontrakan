@@ -70,14 +70,14 @@
         </div>
 
         <!-- Status -->
-        <div style="margin-bottom:20px;">
+        {{-- <div style="margin-bottom:20px;">
             <label>Status</label>
             <select name="status"
                     style="width:100%; padding:8px; border:1px solid #cbd5e1; border-radius:6px;">
                 <option value="aktif" selected>Aktif</option>
                 <option value="selesai">Selesai</option>
             </select>
-        </div>
+        </div> --}}
 
         <!-- Buttons -->
         <div style="display:flex; gap:10px;">

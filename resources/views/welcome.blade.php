@@ -6,32 +6,14 @@
   @yield('css')
 </head>
 <body>
-
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <h2>Admin Panel</h2>
-    <div class="menu">
-      <a href="#" class="active">Dashboard</a>
-      <a href="#">Unit</a>
-      <a href="#">Penyewa</a>
-      <a href="#">Sewa</a>
-      <a href="#">Pembayaran</a>
-      <a href="#">Pengeluaran</a>
-      <a href="{{ route('logout') }}">Logout</a>
-    </div>
-  </div>
-
   <!-- MAIN -->
   <div class="main">
 
     <!-- TOPBAR -->
-    <div class="topbar">
-      <h3>Sistem Pendataan Kios & Kontrakan</h3>
-      <span>Admin</span>
-    </div>
+    <h3>Sistem Pendataan Kios & Kontrakan</h3>
 
     <!-- CONTENT -->
-    <div class="content">
+    {{-- <div class="content">
 
       <!-- CARDS -->
       <div class="cards">
@@ -91,7 +73,7 @@
         </table>
       </div>
 
-    </div>
+    </div> --}}
   </div>
 
   @yield('js')

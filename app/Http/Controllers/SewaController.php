@@ -35,35 +35,35 @@ class SewaController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'unit_id'         => 'required|exists:units,id',
-            'penyewa_id'      => 'required|exists:penyewas,id',
-            'tanggal_mulai'   => 'required|date',
+            'unit_id' => 'required|exists:units,id',
+            'penyewa_id' => 'required|exists:penyewas,id',
+            'tanggal_mulai' => 'required|date',
             'tanggal_selesai' => 'nullable|date|after:tanggal_mulai',
-            'status'          => 'required|in:aktif,selesai',
         ]);
 
-        // 🔒 Cek apakah unit sudah punya sewa aktif
-        $existingActive = Sewa::where('unit_id', $validated['unit_id'])
+        // ❌ Cegah unit yang sudah aktif
+        $unitSudahDipakai = Sewa::where('unit_id', $validated['unit_id'])
             ->where('status', 'aktif')
             ->exists();
 
-        if ($existingActive) {
-            return back()
-                ->withInput()
-                ->with('error', 'Unit ini sudah memiliki sewa aktif.');
+        if ($unitSudahDipakai) {
+            return back()->with('error', 'Unit sedang digunakan.');
         }
 
-        $sewa = Sewa::create($validated);
+        Sewa::create([
+            'unit_id' => $validated['unit_id'],
+            'penyewa_id' => $validated['penyewa_id'],
+            'tanggal_mulai' => $validated['tanggal_mulai'],
+            'tanggal_selesai' => $validated['tanggal_selesai'],
+            'status' => 'aktif', // 🔥 OTOMATIS
+        ]);
 
-        // 🔥 Jika status aktif → ubah unit jadi disewa
-        if ($validated['status'] === 'aktif') {
-            Unit::where('id', $validated['unit_id'])
-                ->update(['status' => 'disewa']);
-        }
+        // Update status unit
+        Unit::where('id', $validated['unit_id'])
+            ->update(['status' => 'disewa']);
 
-        return redirect()
-            ->route('sewa.index')
-            ->with('success', 'Data sewa berhasil ditambahkan.');
+        return redirect()->route('sewa.index')
+            ->with('success', 'Sewa berhasil dibuat.');
     }
 
     /**
@@ -156,5 +156,24 @@ class SewaController extends Controller
         return redirect()
             ->route('sewa.index')
             ->with('success', 'Data sewa berhasil dihapus.');
+    }
+
+    public function selesai(Sewa $sewa)
+    {
+        if ($sewa->status !== 'aktif') {
+            return back()->with('error', 'Sewa sudah selesai.');
+        }
+
+        $sewa->update([
+            'status' => 'selesai'
+        ]);
+
+        // Kosongkan unit
+        $sewa->unit->update([
+            'status' => 'kosong'
+        ]);
+
+        return redirect()->route('sewa.index')
+            ->with('success', 'Sewa berhasil diselesaikan.');
     }
 }
