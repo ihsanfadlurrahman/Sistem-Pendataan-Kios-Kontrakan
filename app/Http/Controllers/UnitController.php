@@ -36,6 +36,7 @@ class UnitController extends Controller
             'harga_sewa'  => 'required|numeric|min:0',
             'status'      => 'required|in:kosong,disewa',
             'keterangan'  => 'nullable|string|max:255',
+            'pemilik' => 'required|in:ibu,bapak',
         ]);
 
         // 2️⃣ Simpan ke database
@@ -74,8 +75,9 @@ class UnitController extends Controller
             'harga_sewa'  => 'required|numeric|min:0',
             'status'      => 'required|in:kosong,disewa',
             'keterangan'  => 'nullable|string|max:255',
+            'pemilik' => 'required|in:ibu,bapak',
         ]);
-        
+
         $unit = Unit::findOrFail($id);
         $unit->update($validated);
 

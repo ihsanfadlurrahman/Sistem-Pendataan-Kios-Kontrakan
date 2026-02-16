@@ -16,7 +16,8 @@ class Unit extends Model
         'tipe',
         'harga_sewa',
         'status',
-        'keterangan'
+        'keterangan',
+        'pemilik'
     ];
     public function sewas()
     {

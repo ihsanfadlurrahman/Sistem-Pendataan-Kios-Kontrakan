@@ -123,7 +123,7 @@
         </form>
 
         <div class="footer-text">
-            © 2026 Sistem Internal
+            © 2026 Ihsan Fadlurrahman. All rights reserved.
         </div>
     </div>
 

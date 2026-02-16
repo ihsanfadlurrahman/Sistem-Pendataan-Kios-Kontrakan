@@ -18,6 +18,7 @@ return new class extends Migration
         $table->integer('harga_sewa');
         $table->enum('status', ['kosong', 'disewa'])->default('kosong');
         $table->text('keterangan')->nullable();
+        $table->enum('pemilik', ['ibu', 'bapak']);
         $table->timestamps();
         });
     }
