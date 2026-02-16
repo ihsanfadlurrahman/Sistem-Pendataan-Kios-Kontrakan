@@ -1,5 +1,5 @@
 <h1 align="center">🏢 Property Management System</h1>
-Sistem Pendataan Kios & Kontrakan
+<h3 align="center">Sistem Pendataan Kios & Kontrakan</h3>
 
 🚀 Web-Based Rental & Financial Management System
 
