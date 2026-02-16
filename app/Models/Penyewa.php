@@ -17,7 +17,7 @@ class Penyewa extends Model
         'no_hp',
         'alamat'
     ];
-    public function sewas()
+    public function sewa()
     {
         return $this->hasMany(Sewa::class);
     }

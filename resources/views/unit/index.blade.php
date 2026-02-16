@@ -38,9 +38,19 @@
             ">
 
                     <!-- Nama Unit -->
-                    <h4 style="margin-bottom:8px;">
+                    <h4 style="margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+
+                        @if (strtolower($value->tipe) == 'kontrakan')
+                            <span style="font-size:20px;">🛏️</span>
+                        @elseif(strtolower($value->tipe) == 'kios')
+                            <span style="font-size:20px;">🏬</span>
+                        @else
+                            <span style="font-size:20px;">🏠</span>
+                        @endif
+
                         {{ $value->nama_unit }}
                     </h4>
+
 
                     <!-- Tipe -->
                     <p style="margin:4px 0;">
