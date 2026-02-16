@@ -1,9 +1,10 @@
-🏢 Property Management System
-
+<h1 align="center">🏢 Property Management System</h1>
 Sistem Pendataan Kios & Kontrakan
 
 🚀 Web-Based Rental & Financial Management System
+
 ⚙️ Built with Laravel 10
+
 📊 Status: Still Developed
 
 <p align="center"> <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="250"> </p>
