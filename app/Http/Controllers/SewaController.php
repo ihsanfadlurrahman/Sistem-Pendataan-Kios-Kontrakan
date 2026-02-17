@@ -34,15 +34,40 @@ class SewaController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $mode = $request->mode_penyewa;
+
+        if ($mode == 'lama') {
+
+            $request->validate([
+                'penyewa_id' => 'required|exists:penyewas,id',
+            ]);
+
+            $penyewa_id = $request->penyewa_id;
+        } else {
+
+            $request->validate([
+                'nama' => 'required|string|max:255',
+                'no_hp' => 'required|string|max:20',
+                'alamat' => 'required|string|max:255',
+            ]);
+
+            $penyewa = Penyewa::create([
+                'nama' => $request->nama,
+                'no_hp' => $request->no_hp,
+                'alamat' => $request->alamat,
+            ]);
+
+            $penyewa_id = $penyewa->id;
+        }
+
+        $request->validate([
             'unit_id' => 'required|exists:units,id',
-            'penyewa_id' => 'required|exists:penyewas,id',
             'tanggal_mulai' => 'required|date',
             'tanggal_selesai' => 'nullable|date|after:tanggal_mulai',
         ]);
 
-        // ❌ Cegah unit yang sudah aktif
-        $unitSudahDipakai = Sewa::where('unit_id', $validated['unit_id'])
+        // Cegah unit sudah aktif
+        $unitSudahDipakai = Sewa::where('unit_id', $request->unit_id)
             ->where('status', 'aktif')
             ->exists();
 
@@ -51,15 +76,14 @@ class SewaController extends Controller
         }
 
         Sewa::create([
-            'unit_id' => $validated['unit_id'],
-            'penyewa_id' => $validated['penyewa_id'],
-            'tanggal_mulai' => $validated['tanggal_mulai'],
-            'tanggal_selesai' => $validated['tanggal_selesai'],
-            'status' => 'aktif', // 🔥 OTOMATIS
+            'unit_id' => $request->unit_id,
+            'penyewa_id' => $penyewa_id,
+            'tanggal_mulai' => $request->tanggal_mulai,
+            'tanggal_selesai' => $request->tanggal_selesai,
+            'status' => 'aktif',
         ]);
 
-        // Update status unit
-        Unit::where('id', $validated['unit_id'])
+        Unit::where('id', $request->unit_id)
             ->update(['status' => 'disewa']);
 
         return redirect()->route('sewa.index')

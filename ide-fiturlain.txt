@@ -2,7 +2,8 @@
 - View unit dan penyewa diubah jadi Card (Terealisasikan)
 - Jika data sewa dihapus, status berubah jadi selesai. (Dibatalkan)
 - Tambahkan tombol selesai di sewa (tanpa edit) (Terealisasikan)
-- Tambahkan fitur validasi, untuk tipe kios, beberapa kios bisa disewa 1 orang. misal, 1 orang sewa 2/3 kios.
+- Tambahkan fitur validasi, untuk tipe kios, beberapa kios bisa disewa 1 orang. misal, 1 orang sewa 2/3 kios. (Sudah ada)
 - Tambahkan fitur warna, pada unit. Pink = Punya ibu, Biru = Punya Bapak (Terealisasikan)
 - Tambahkan Soft delete pada sewa jika status selesai.
 - Pada tambah sewa tidak bisa memilih status, status otomatis terisi "Aktif" (Terealisasikan)
+- Field input no hp penyewa masih bisa menggunakan huruf (harus angka semua)

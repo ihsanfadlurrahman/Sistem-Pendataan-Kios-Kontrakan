@@ -4,73 +4,90 @@
 
 @section('content')
 
-<div class="table-box" style="max-width:600px;">
+    <div class="table-box" style="max-width:600px;">
 
-    <h4 style="margin-bottom:20px;">Tambah Sewa</h4>
+        <h4 style="margin-bottom:20px;">Tambah Sewa</h4>
 
-    @if ($errors->any())
-        <div style="background:#fee2e2; padding:10px; border-radius:6px; margin-bottom:15px; color:#b91c1c;">
-            <ul style="margin:0; padding-left:18px;">
-                @foreach ($errors->all() as $error)
-                    <li style="font-size:14px;">{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+        @if ($errors->any())
+            <div style="background:#fee2e2; padding:10px; border-radius:6px; margin-bottom:15px; color:#b91c1c;">
+                <ul style="margin:0; padding-left:18px;">
+                    @foreach ($errors->all() as $error)
+                        <li style="font-size:14px;">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-    <form action="{{ route('sewa.store') }}" method="POST">
-        @csrf
+        <form action="{{ route('sewa.store') }}" method="POST">
+            @csrf
 
-        <!-- Penyewa -->
-        <div style="margin-bottom:15px;">
-            <label>Pilih Penyewa</label>
-            <select name="penyewa_id"
+            <!-- Penyewa -->
+            <div style="margin-bottom:20px;">
+                <label><strong>Pilih Tipe Penyewa</strong></label><br>
+
+                <input type="radio" name="mode_penyewa" value="lama" checked onclick="togglePenyewa()">
+                Penyewa Lama
+
+                <input type="radio" name="mode_penyewa" value="baru" style="margin-left:15px;"
+                    onclick="togglePenyewa()">
+                Penyewa Baru
+            </div>
+
+            <div id="penyewa_lama_section" style="margin-bottom:15px;">
+                <label>Pilih Penyewa</label>
+                <select name="penyewa_id" style="width:100%; padding:8px; border:1px solid #cbd5e1; border-radius:6px;">
+                    <option value="">-- Pilih Penyewa --</option>
+                    @foreach ($penyewa as $value)
+                        <option value="{{ $value->id }}">
+                            {{ $value->nama }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div id="penyewa_baru_section" style="display:none; margin-bottom:15px;">
+                <label>Nama Penyewa</label>
+                <input type="text" name="nama"
+                    style="width:100%; padding:8px; margin-bottom:10px; border:1px solid #cbd5e1; border-radius:6px;">
+
+                <label>No HP</label>
+                <input type="text" name="no_hp"
+                    style="width:100%; padding:8px; margin-bottom:10px; border:1px solid #cbd5e1; border-radius:6px;">
+
+                <label>Alamat</label>
+                <input type="text" name="alamat"
                     style="width:100%; padding:8px; border:1px solid #cbd5e1; border-radius:6px;">
-                <option value="">-- Pilih Penyewa --</option>
-                @foreach($penyewa as $value)
-                    <option value="{{ $value->id }}"
-                        {{ old('penyewa_id') == $value->id ? 'selected' : '' }}>
-                        {{ $value->nama }}
-                    </option>
-                @endforeach
-            </select>
-        </div>
+            </div>
 
-        <!-- Unit -->
-        <div style="margin-bottom:15px;">
-            <label>Pilih Unit</label>
-            <select name="unit_id"
+            <!-- Unit -->
+            <div style="margin-bottom:15px;">
+                <label>Pilih Unit</label>
+                <select name="unit_id" style="width:100%; padding:8px; border:1px solid #cbd5e1; border-radius:6px;">
+                    <option value="">-- Pilih Unit Kosong --</option>
+                    @foreach ($units as $unit)
+                        <option value="{{ $unit->id }}" {{ old('unit_id') == $unit->id ? 'selected' : '' }}>
+                            {{ $unit->nama_unit }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <!-- Tanggal Mulai -->
+            <div style="margin-bottom:15px;">
+                <label>Tanggal Mulai</label>
+                <input type="date" name="tanggal_mulai" value="{{ old('tanggal_mulai') }}"
                     style="width:100%; padding:8px; border:1px solid #cbd5e1; border-radius:6px;">
-                <option value="">-- Pilih Unit Kosong --</option>
-                @foreach($units as $unit)
-                    <option value="{{ $unit->id }}"
-                        {{ old('unit_id') == $unit->id ? 'selected' : '' }}>
-                        {{ $unit->nama_unit }}
-                    </option>
-                @endforeach
-            </select>
-        </div>
+            </div>
 
-        <!-- Tanggal Mulai -->
-        <div style="margin-bottom:15px;">
-            <label>Tanggal Mulai</label>
-            <input type="date"
-                   name="tanggal_mulai"
-                   value="{{ old('tanggal_mulai') }}"
-                   style="width:100%; padding:8px; border:1px solid #cbd5e1; border-radius:6px;">
-        </div>
+            <!-- Tanggal Selesai -->
+            <div style="margin-bottom:15px;">
+                <label>Tanggal Selesai (Opsional)</label>
+                <input type="date" name="tanggal_selesai" value="{{ old('tanggal_selesai') }}"
+                    style="width:100%; padding:8px; border:1px solid #cbd5e1; border-radius:6px;">
+            </div>
 
-        <!-- Tanggal Selesai -->
-        <div style="margin-bottom:15px;">
-            <label>Tanggal Selesai (Opsional)</label>
-            <input type="date"
-                   name="tanggal_selesai"
-                   value="{{ old('tanggal_selesai') }}"
-                   style="width:100%; padding:8px; border:1px solid #cbd5e1; border-radius:6px;">
-        </div>
-
-        <!-- Status -->
-        {{-- <div style="margin-bottom:20px;">
+            <!-- Status -->
+            {{-- <div style="margin-bottom:20px;">
             <label>Status</label>
             <select name="status"
                     style="width:100%; padding:8px; border:1px solid #cbd5e1; border-radius:6px;">
@@ -79,21 +96,34 @@
             </select>
         </div> --}}
 
-        <!-- Buttons -->
-        <div style="display:flex; gap:10px;">
-            <button type="submit"
+            <!-- Buttons -->
+            <div style="display:flex; gap:10px;">
+                <button type="submit"
                     style="background:#2563eb; color:#fff; padding:8px 14px; border:none; border-radius:6px;">
-                Simpan
-            </button>
+                    Simpan
+                </button>
 
-            <a href="{{ route('sewa.index') }}"
-               style="background:#94a3b8; color:#fff; padding:8px 14px; border-radius:6px; text-decoration:none;">
-                Batal
-            </a>
-        </div>
+                <a href="{{ route('sewa.index') }}"
+                    style="background:#94a3b8; color:#fff; padding:8px 14px; border-radius:6px; text-decoration:none;">
+                    Batal
+                </a>
+            </div>
 
-    </form>
+        </form>
 
-</div>
+    </div>
+    <script>
+        function togglePenyewa() {
+            const mode = document.querySelector('input[name="mode_penyewa"]:checked').value;
+
+            if (mode === 'lama') {
+                document.getElementById('penyewa_lama_section').style.display = 'block';
+                document.getElementById('penyewa_baru_section').style.display = 'none';
+            } else {
+                document.getElementById('penyewa_lama_section').style.display = 'none';
+                document.getElementById('penyewa_baru_section').style.display = 'block';
+            }
+        }
+    </script>
 
 @endsection
