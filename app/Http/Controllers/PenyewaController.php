@@ -32,7 +32,7 @@ class PenyewaController extends Controller
         // 1️⃣ Validasi
         $validated = $request->validate([
             'nama'   => 'required|string|max:100',
-            'no_hp'  => 'required|string|max:20',
+            'no_hp' => 'required|digits_between:10,15',
             'alamat' => 'nullable|string|max:255',
         ]);
 
@@ -68,11 +68,11 @@ class PenyewaController extends Controller
     {
         $validated = $request->validate([
             'nama'   => 'required|string|max:100',
-            'no_hp'  => 'required|string|max:20',
+            'no_hp'  => 'required|digits_between:10,15',
             'alamat' => 'nullable|string|max:255',
         ]);
 
-        $penyewa = Penyewa::findOrFail($id);    
+        $penyewa = Penyewa::findOrFail($id);
         $penyewa->update($validated);
 
         return redirect()

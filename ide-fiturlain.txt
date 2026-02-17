@@ -1,4 +1,4 @@
-- Input Penyewa dan Sewa disatukan
+- Input Penyewa dan Sewa disatukan (Terealisasikan)
 - View unit dan penyewa diubah jadi Card (Terealisasikan)
 - Jika data sewa dihapus, status berubah jadi selesai. (Dibatalkan)
 - Tambahkan tombol selesai di sewa (tanpa edit) (Terealisasikan)
@@ -6,4 +6,16 @@
 - Tambahkan fitur warna, pada unit. Pink = Punya ibu, Biru = Punya Bapak (Terealisasikan)
 - Tambahkan Soft delete pada sewa jika status selesai.
 - Pada tambah sewa tidak bisa memilih status, status otomatis terisi "Aktif" (Terealisasikan)
-- Field input no hp penyewa masih bisa menggunakan huruf (harus angka semua)
+- Field input no hp penyewa masih bisa menggunakan huruf (harus angka semua) (Terealisasikan)
+- Desain ulang
+    - Layouts (Terealisasikan)
+    - Dashboard (Terealisasikan)
+    - Unit (Terealisasikan)
+    - Penyewa
+    - Sewa
+    - Pembayaran
+    - Pengeluaran
+    - Laporan Keuangan (Terealisasikan)
+    - Export PDF (Terealisasikan)
+
+- CSS dipisah per fitur (contoh: unit.css), bukan digabung semua di style.css.

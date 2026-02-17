@@ -1,14 +1,16 @@
-<!-- TOPBAR -->
+<!-- TOPBAR / NAVBAR -->
 <div class="topbar">
-    <h3>Sistem Pendataan Kios & Kontrakan</h3>
-    <span>Admin</span>
-</div>
-{{-- <div class="topbar">
-    <h3>@yield('page-title', 'Dashboard')</h3>
-
-    <div>
-        <span style="color:#64748b;">
-            {{ auth()->user()->name ?? 'Admin' }}
-        </span>
+    <div class="topbar-left">
+        <h3>Sistem Pendataan Kios &amp; Kontrakan</h3>
+        <div class="page-breadcrumb">@yield('page-title', 'Dashboard')</div>
     </div>
-</div> --}}
+
+    <div class="topbar-right">
+        <div class="topbar-user">
+            <div class="user-avatar">
+                {{ strtoupper(substr(auth()->user()->name ?? 'A', 0, 1)) }}
+            </div>
+            <span class="user-name">{{ auth()->user()->name ?? 'Admin' }}</span>
+        </div>
+    </div>
+</div>

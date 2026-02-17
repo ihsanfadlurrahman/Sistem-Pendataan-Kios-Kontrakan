@@ -51,7 +51,8 @@
                     style="width:100%; padding:8px; margin-bottom:10px; border:1px solid #cbd5e1; border-radius:6px;">
 
                 <label>No HP</label>
-                <input type="text" name="no_hp"
+                <input type="text" name="no_hp" maxlength="13" inputmode="numeric"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                     style="width:100%; padding:8px; margin-bottom:10px; border:1px solid #cbd5e1; border-radius:6px;">
 
                 <label>Alamat</label>
