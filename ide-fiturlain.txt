@@ -24,3 +24,8 @@
 - Field input status unit masih bisa dipilih, harus otomatis terisi kosong.
 - Pada saat menambahkan pembayaran, status otomatis terisi belum lunas.
 - Tambahkan tombol lunas pada pembayaran dan status berubah jadi lunas (edit tetap ada).
+- Pada edit unit, status unit yang disewa tidak bisa diubah sampai status sewanya selesai.
+- Tambahkan filter tanggal mulai dan tanggal selesai pada sewa
+- Pada sewa, tombol aksi nya jika masih aktif hanya menampilkan tombol edit dan selesai.
+    jika sudah selesai tombol aksi hanya menampilkan tombol hapus.
+- Sistem pembayaran masih ada yang perlu diperbaiki (belum tau yang mana)
