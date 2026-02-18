@@ -1,0 +1,80 @@
+    /* Stats Bar */
+    .pembayaran-stats {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 14px 24px;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+    }
+
+    .pembayaran-stat-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 4px 20px;
+        flex: 1;
+        min-width: 120px;
+    }
+
+    .pembayaran-stat-divider {
+        width: 1px;
+        height: 36px;
+        background: var(--border);
+        flex-shrink: 0;
+    }
+
+    /* Table Enhancements */
+    .table-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        color: #ffffff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        flex-shrink: 0;
+        box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+    }
+
+    .table-unit-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+        background: var(--blue-lt);
+        border: 1px solid #bfdbfe;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--blue);
+        flex-shrink: 0;
+    }
+
+    .table-unit-icon svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .table-date-icon-sm {
+        width: 24px;
+        height: 24px;
+        border-radius: 5px;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-secondary);
+        flex-shrink: 0;
+    }
+
+    .table-date-icon-sm svg {
+        width: 12px;
+        height: 12px;
+    }

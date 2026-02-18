@@ -1,0 +1,117 @@
+  /* Stats Bar */
+    .pengeluaran-stats {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 14px 24px;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+    }
+
+    .pengeluaran-stat-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 4px 28px;
+        flex: 1;
+        min-width: 120px;
+    }
+
+    .pengeluaran-stat-divider {
+        width: 1px;
+        height: 36px;
+        background: var(--border);
+        flex-shrink: 0;
+    }
+
+    /* Table Date Icon */
+    .table-date-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-secondary);
+        flex-shrink: 0;
+    }
+
+    .table-date-icon svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    /* Kategori Badge */
+    .kategori-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 4px 12px;
+        border-radius: 99px;
+        font-size: 11.5px;
+        font-weight: 700;
+        text-transform: capitalize;
+        white-space: nowrap;
+    }
+
+    /* Default kategori style */
+    .kategori-badge {
+        background: #f1f5f9;
+        color: #475569;
+        border: 1px solid #e2e8f0;
+    }
+
+    /* Specific kategori colors */
+    .kategori-listrik {
+        background: #fef3c7;
+        color: #92400e;
+        border: 1px solid #fde68a;
+    }
+
+    .kategori-air {
+        background: #dbeafe;
+        color: #1e40af;
+        border: 1px solid #bfdbfe;
+    }
+
+    .kategori-perbaikan,
+    .kategori-maintenance {
+        background: #fee2e2;
+        color: #991b1b;
+        border: 1px solid #fecaca;
+    }
+
+    .kategori-kebersihan {
+        background: #dcfce7;
+        color: #166534;
+        border: 1px solid #bbf7d0;
+    }
+
+    .kategori-keamanan {
+        background: #f3e8ff;
+        color: #6b21a8;
+        border: 1px solid #e9d5ff;
+    }
+
+    .kategori-administrasi {
+        background: #fce7f3;
+        color: #9f1239;
+        border: 1px solid #fbcfe8;
+    }
+
+    .kategori-pajak {
+        background: #fff7ed;
+        color: #9a3412;
+        border: 1px solid #fed7aa;
+    }
+
+    .kategori-lainnya,
+    .kategori-operasional {
+        background: #f1f5f9;
+        color: #475569;
+        border: 1px solid #cbd5e1;
+    }

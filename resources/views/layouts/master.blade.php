@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Sistem Pendataan Kios & Kontrakan')</title>
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/unit.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/penyewa.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/sewa.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/pembayaran.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/pengeluaran.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/laporan.css') }}" rel="stylesheet">
     @stack('styles')
 </head>
 
