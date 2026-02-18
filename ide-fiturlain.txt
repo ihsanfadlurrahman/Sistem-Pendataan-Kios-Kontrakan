@@ -8,14 +8,16 @@
 - Pada tambah sewa tidak bisa memilih status, status otomatis terisi "Aktif" (Terealisasikan)
 - Field input no hp penyewa masih bisa menggunakan huruf (harus angka semua) (Terealisasikan)
 - Desain ulang
+    - Login
     - Layouts (Terealisasikan)
     - Dashboard (Terealisasikan)
     - Unit (Terealisasikan)
-    - Penyewa
-    - Sewa
-    - Pembayaran
-    - Pengeluaran
+    - Penyewa (Terealisasikan)
+    - Sewa (Terealisasikan)
+    - Pembayaran (Terealisasikan)
+    - Pengeluaran (Terealisasikan)
     - Laporan Keuangan (Terealisasikan)
     - Export PDF (Terealisasikan)
 
 - CSS dipisah per fitur (contoh: unit.css), bukan digabung semua di style.css.
+- Pembayaran: Unit kios di hitung /tahun, Unit kontrakan /bulan
