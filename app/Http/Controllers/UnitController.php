@@ -34,10 +34,12 @@ class UnitController extends Controller
             'nama_unit'   => 'required|string|max:100',
             'tipe'        => 'required|in:kios,kontrakan',
             'harga_sewa'  => 'required|numeric|min:0',
-            'status'      => 'required|in:kosong,disewa',
-            'keterangan'  => 'nullable|string|max:255',
+            'periode'     => 'required|in:tahunan,bulanan',
             'pemilik' => 'required|in:ibu,bapak',
+            'keterangan'  => 'nullable|string|max:255',
         ]);
+
+        $validated['status'] = 'kosong'; // Set default status saat buat baru
 
         // 2️⃣ Simpan ke database
         Unit::create($validated);
@@ -73,12 +75,17 @@ class UnitController extends Controller
             'nama_unit'   => 'required|string|max:100',
             'tipe'        => 'required|in:kios,kontrakan',
             'harga_sewa'  => 'required|numeric|min:0',
-            'status'      => 'required|in:kosong,disewa',
-            'keterangan'  => 'nullable|string|max:255',
+            'periode' => 'required|in:bulanan,tahunan',
             'pemilik' => 'required|in:ibu,bapak',
+            'keterangan'  => 'nullable|string|max:255',
         ]);
 
         $unit = Unit::findOrFail($id);
+
+        if ($unit->sewas()->count() > 0 && $validated['status'] === 'kosong') {
+            return back()->with('error', 'Unit tidak bisa diubah menjadi kosong karena memiliki data sewa.');
+        }
+
         $unit->update($validated);
 
         return redirect()
@@ -92,9 +99,9 @@ class UnitController extends Controller
     public function destroy(string $id)
     {
         $unit = Unit::findOrFail($id);
-        // if ($unit->sewas()->count() > 0) {
-        //     return back()->with('error', 'Unit tidak bisa dihapus karena memiliki data sewa.');
-        // }
+        if ($unit->sewas()->count() > 0) {
+            return back()->with('error', 'Unit tidak bisa dihapus karena memiliki data sewa.');
+        }
         $unit->delete();
 
         return redirect()

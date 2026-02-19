@@ -17,8 +17,9 @@ return new class extends Migration
         $table->enum('tipe', ['kios', 'kontrakan']);
         $table->integer('harga_sewa');
         $table->enum('status', ['kosong', 'disewa'])->default('kosong');
-        $table->text('keterangan')->nullable();
+        $table->enum('periode', ['bulanan', 'tahunan']);
         $table->enum('pemilik', ['ibu', 'bapak']);
+        $table->text('keterangan')->nullable();
         $table->timestamps();
         });
     }

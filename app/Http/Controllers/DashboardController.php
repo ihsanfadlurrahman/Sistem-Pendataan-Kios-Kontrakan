@@ -20,8 +20,8 @@ class DashboardController extends Controller
         $kosong = Unit::where('status', 'kosong')->count();
 
         // Pemasukan Bulan Ini
-        $pemasukanBulanIni = Pembayaran::whereMonth('bulan', now()->month)
-            ->whereYear('bulan', now()->year)
+        $pemasukanBulanIni = Pembayaran::whereMonth('periode', now()->month)
+            ->whereYear('periode', now()->year)
             ->where('status', 'lunas')
             ->sum('jumlah');
 
