@@ -78,7 +78,7 @@
                         name="no_hp"
                         value="{{ old('no_hp', $penyewa->no_hp) }}"
                         placeholder="Contoh: 08123456789"
-                        maxlength="15"
+                        maxlength="13"
                         inputmode="numeric"
                         oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                         required>
