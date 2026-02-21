@@ -2,7 +2,6 @@
 .sewa-stats {
     display: flex;
     align-items: center;
-    gap: 0;
     background: var(--bg-elevated);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
@@ -40,7 +39,7 @@
     font-size: 12px;
     font-weight: 700;
     flex-shrink: 0;
-    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+    box-shadow: 0 2px 6px rgba(37,99,235,0.25);
 }
 
 .table-unit-icon {
@@ -56,15 +55,89 @@
     flex-shrink: 0;
 }
 
-.table-unit-icon svg {
-    width: 14px;
-    height: 14px;
+.table-unit-icon svg { width: 14px; height: 14px; }
+
+/* Penyewa Toggle */
+.penyewa-toggle-section { margin-bottom: 28px; }
+
+.section-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 14px;
 }
-/* Form Base Styles (reuse from previous forms) Create View Sewa*/
-.form-container {
-    max-width: 800px;
-    margin: 0 auto;
+
+.section-label svg { width: 18px; height: 18px; color: var(--blue); }
+
+.radio-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
 }
+
+.radio-card { position: relative; cursor: pointer; }
+
+.radio-card input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.radio-card-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg-surface);
+    transition: all 0.2s;
+}
+
+.radio-card input[type="radio"]:checked + .radio-card-content {
+    border-color: var(--blue);
+    background: var(--blue-lt);
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+.radio-card-content:hover { border-color: var(--border-strong); }
+
+.radio-card-content svg {
+    width: 22px;
+    height: 22px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.radio-card input[type="radio"]:checked + .radio-card-content svg { color: var(--blue); }
+
+.radio-card-title {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 3px;
+}
+
+.radio-card-desc {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* Form */
+.conditional-section { margin-bottom: 24px; }
+
+.form-divider { height: 1px; background: var(--border); margin: 28px 0; }
+
+.form-container { max-width: 800px; margin: 0 auto; }
 
 .form-card {
     background: var(--bg-surface);
@@ -93,143 +166,16 @@
     justify-content: center;
     color: #fff;
     flex-shrink: 0;
-    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+    box-shadow: 0 4px 14px rgba(37,99,235,0.35);
 }
 
-.form-header-icon svg {
-    width: 22px;
-    height: 22px;
-}
+.form-header-icon svg { width: 22px; height: 22px; }
+.form-header h4 { font-size: 20px; font-weight: 800; color: var(--text-primary); margin: 0 0 3px 0; letter-spacing: -0.3px; }
+.form-header p  { font-size: 13.5px; color: var(--text-muted); margin: 0; }
 
-.form-header h4 {
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--text-primary);
-    margin: 0 0 3px 0;
-    letter-spacing: -0.3px;
-}
-
-.form-header p {
-    font-size: 13.5px;
-    color: var(--text-muted);
-    margin: 0;
-}
-
-/* Penyewa Toggle Section */
-.penyewa-toggle-section {
-    margin-bottom: 28px;
-}
-
-.section-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 14px;
-}
-
-.section-label svg {
-    width: 18px;
-    height: 18px;
-    color: var(--blue);
-}
-
-.radio-group {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-}
-
-.radio-card {
-    position: relative;
-    cursor: pointer;
-}
-
-.radio-card input[type="radio"] {
-    position: absolute;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-}
-
-.radio-card-content {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 16px;
-    border: 2px solid var(--border);
-    border-radius: var(--radius-md);
-    background: var(--bg-surface);
-    transition: all 0.2s;
-}
-
-.radio-card input[type="radio"]:checked + .radio-card-content {
-    border-color: var(--blue);
-    background: var(--blue-lt);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-}
-
-.radio-card-content:hover {
-    border-color: var(--border-strong);
-}
-
-.radio-card-content svg {
-    width: 22px;
-    height: 22px;
-    color: var(--text-muted);
-    flex-shrink: 0;
-    margin-top: 2px;
-}
-
-.radio-card input[type="radio"]:checked + .radio-card-content svg {
-    color: var(--blue);
-}
-
-.radio-card-title {
-    display: block;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 3px;
-}
-
-.radio-card-desc {
-    display: block;
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.4;
-}
-
-/* Conditional Section */
-.conditional-section {
-    margin-bottom: 24px;
-}
-
-/* Form Divider */
-.form-divider {
-    height: 1px;
-    background: var(--border);
-    margin: 28px 0;
-}
-
-/* Form Grid */
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group-full {
-    grid-column: 1 / -1;
-}
+.form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.form-group { display: flex; flex-direction: column; }
+.form-group-full { grid-column: 1 / -1; }
 
 .form-group label {
     display: flex;
@@ -241,23 +187,10 @@
     margin-bottom: 8px;
 }
 
-.form-group label svg {
-    width: 15px;
-    height: 15px;
-    color: var(--text-muted);
-    flex-shrink: 0;
-}
+.form-group label svg { width: 15px; height: 15px; color: var(--text-muted); flex-shrink: 0; }
 
-.required {
-    color: var(--red);
-    font-weight: 700;
-}
-
-.optional {
-    color: var(--text-muted);
-    font-weight: 500;
-    font-size: 12px;
-}
+.required { color: var(--red); font-weight: 700; }
+.optional  { color: var(--text-muted); font-weight: 500; font-size: 12px; }
 
 .field-hint {
     display: flex;
@@ -269,11 +202,7 @@
     line-height: 1.4;
 }
 
-.field-hint svg {
-    width: 13px;
-    height: 13px;
-    flex-shrink: 0;
-}
+.field-hint svg { width: 13px; height: 13px; flex-shrink: 0; }
 
 .form-actions {
     display: flex;
@@ -282,6 +211,31 @@
     margin-top: 28px;
     padding-top: 24px;
     border-top: 1px solid var(--border);
+}
+
+/* Detail item (show page) */
+.detail-item { display: flex; flex-direction: column; gap: 4px; }
+.detail-label { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.detail-value { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+    .sewa-stat-item { padding: 6px 10px; min-width: 60px; }
+
+    .form-card { padding: 20px 16px 24px; }
+
+    /* Show page info grid — 1 kolom di HP */
+    .form-container > .form-card > div[style*="grid-template-columns:repeat(2"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Form bayar — stack vertikal */
+    .form-card form > div[style*="display:flex"] {
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 640px) {

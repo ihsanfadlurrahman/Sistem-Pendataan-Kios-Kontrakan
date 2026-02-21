@@ -15,8 +15,10 @@
     @stack('styles')
 </head>
 
-
 <body>
+
+    {{-- Sidebar Overlay (mobile tap to close) --}}
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
     @include('layouts.sidebar')
 
@@ -38,29 +40,24 @@
     </div>
 
     <script>
-        // Real-time clock
+        // ─── Real-time Clock ───────────────────────────
         function updateClock() {
             const now = new Date();
-            const days = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];
-            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
-            const d = days[now.getDay()];
-            const date = now.getDate();
+            const days   = ['Min','Sen','Sel','Rab','Kam','Jum','Sab'];
+            const months = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+            const d     = days[now.getDay()];
+            const date  = now.getDate();
             const month = months[now.getMonth()];
-            const year = now.getFullYear();
-            const time = now.toLocaleTimeString('id-ID', {
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            });
+            const year  = now.getFullYear();
+            const time  = now.toLocaleTimeString('id-ID', { hour:'2-digit', minute:'2-digit', second:'2-digit' });
             document.getElementById('clockText').innerText = `${d}, ${date} ${month} ${year}  ${time}`;
         }
         setInterval(updateClock, 1000);
         updateClock();
 
-        // Draggable clock
+        // ─── Draggable Clock ───────────────────────────
         const clock = document.getElementById('floatingClock');
-        let isDragging = false,
-            offsetX, offsetY;
+        let isDragging = false, offsetX, offsetY;
 
         clock.addEventListener('mousedown', function(e) {
             isDragging = true;
@@ -68,20 +65,60 @@
             offsetY = e.clientY - clock.offsetTop;
             clock.style.right = 'auto';
         });
-
         document.addEventListener('mousemove', function(e) {
             if (!isDragging) return;
             clock.style.left = (e.clientX - offsetX) + 'px';
-            clock.style.top = (e.clientY - offsetY) + 'px';
+            clock.style.top  = (e.clientY - offsetY) + 'px';
+        });
+        document.addEventListener('mouseup', () => { isDragging = false; });
+
+        // ─── Sidebar Toggle (Mobile) ──────────────────
+        const sidebar        = document.querySelector('.sidebar');
+        const overlay        = document.getElementById('sidebarOverlay');
+        const hamburgerBtn   = document.getElementById('hamburgerBtn');
+
+        function openSidebar() {
+            sidebar.classList.add('open');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // cegah scroll body saat sidebar terbuka
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        hamburgerBtn.addEventListener('click', function() {
+            if (sidebar.classList.contains('open')) {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
         });
 
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
+        // Tap overlay → tutup sidebar
+        overlay.addEventListener('click', closeSidebar);
+
+        // Tutup sidebar otomatis saat klik link menu (mobile UX)
+        document.querySelectorAll('.menu a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    closeSidebar();
+                }
+            });
+        });
+
+        // Tutup sidebar saat resize ke desktop
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                closeSidebar();
+            }
         });
     </script>
 
     @stack('scripts')
-
+    <script src="{{ asset('assets/js/script.js') }}"></script>
 </body>
 
 </html>

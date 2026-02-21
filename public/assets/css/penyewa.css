@@ -2,7 +2,6 @@
 .penyewa-stats {
     display: flex;
     align-items: center;
-    gap: 0;
     background: var(--bg-elevated);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
@@ -41,10 +40,7 @@
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-sm);
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        border-color 0.2s;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
     display: flex;
     flex-direction: column;
 }
@@ -55,7 +51,6 @@
     border-color: var(--border-strong);
 }
 
-/* Card Header */
 .penyewa-card-header {
     display: flex;
     align-items: center;
@@ -75,18 +70,12 @@
     justify-content: center;
     color: #ffffff;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 4px 12px rgba(37,99,235,0.3);
 }
 
-.penyewa-avatar svg {
-    width: 26px;
-    height: 26px;
-}
+.penyewa-avatar svg { width: 26px; height: 26px; }
 
-.penyewa-info {
-    flex: 1;
-    min-width: 0;
-}
+.penyewa-info { flex: 1; min-width: 0; }
 
 .penyewa-name {
     font-size: 16px;
@@ -107,17 +96,8 @@
     font-weight: 700;
 }
 
-.status-active {
-    background: var(--green-lt);
-    color: var(--green);
-    border: 1px solid #bbf7d0;
-}
-
-.status-inactive {
-    background: #f1f5f9;
-    color: #64748b;
-    border: 1px solid #e2e8f0;
-}
+.status-active   { background: var(--green-lt); color: var(--green); border: 1px solid #bbf7d0; }
+.status-inactive { background: #f1f5f9; color: #64748b; border: 1px solid #e2e8f0; }
 
 .status-dot {
     width: 6px;
@@ -127,7 +107,6 @@
     flex-shrink: 0;
 }
 
-/* Details Section */
 .penyewa-details {
     padding: 16px 20px;
     display: flex;
@@ -136,11 +115,7 @@
     flex: 1;
 }
 
-.detail-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-}
+.detail-row { display: flex; align-items: flex-start; gap: 12px; }
 
 .detail-icon {
     width: 36px;
@@ -155,15 +130,9 @@
     color: var(--text-secondary);
 }
 
-.detail-icon svg {
-    width: 18px;
-    height: 18px;
-}
+.detail-icon svg { width: 18px; height: 18px; }
 
-.detail-content {
-    flex: 1;
-    min-width: 0;
-}
+.detail-content { flex: 1; min-width: 0; }
 
 .detail-label {
     font-size: 11px;
@@ -182,13 +151,7 @@
     word-break: break-word;
 }
 
-/* Unit Badges */
-.unit-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 2px;
-}
+.unit-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
 
 .unit-badge {
     display: inline-flex;
@@ -203,7 +166,6 @@
     letter-spacing: 0.2px;
 }
 
-/* No Unit Banner */
 .no-unit-banner {
     display: flex;
     align-items: center;
@@ -218,13 +180,8 @@
     font-weight: 600;
 }
 
-.no-unit-banner svg {
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-}
+.no-unit-banner svg { width: 16px; height: 16px; flex-shrink: 0; }
 
-/* Actions */
 .penyewa-card-actions {
     display: flex;
     gap: 8px;
@@ -232,11 +189,9 @@
     border-top: 1px solid var(--border);
     background: var(--bg-elevated);
 }
-/* Form Container */
-.form-container {
-    max-width: 700px;
-    margin: 0 auto;
-}
+
+/* Form */
+.form-container { max-width: 700px; margin: 0 auto; }
 
 .form-card {
     background: var(--bg-surface);
@@ -246,7 +201,6 @@
     box-shadow: var(--shadow-sm);
 }
 
-/* Form Header */
 .form-header {
     display: flex;
     align-items: center;
@@ -266,53 +220,22 @@
     justify-content: center;
     color: #fff;
     flex-shrink: 0;
-    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+    box-shadow: 0 4px 14px rgba(37,99,235,0.35);
 }
 
 .form-header-icon.edit-icon {
     background: linear-gradient(135deg, var(--amber) 0%, #b45309 100%);
-    box-shadow: 0 4px 14px rgba(217, 119, 6, 0.35);
+    box-shadow: 0 4px 14px rgba(217,119,6,0.35);
 }
 
-.form-header-icon svg {
-    width: 22px;
-    height: 22px;
-}
+.form-header-icon svg { width: 22px; height: 22px; }
+.form-header h4 { font-size: 20px; font-weight: 800; color: var(--text-primary); margin: 0 0 3px 0; letter-spacing: -0.3px; }
+.form-header p  { font-size: 13.5px; color: var(--text-muted); margin: 0; }
+.form-header p strong { color: var(--text-primary); font-weight: 700; }
 
-.form-header h4 {
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--text-primary);
-    margin: 0 0 3px 0;
-    letter-spacing: -0.3px;
-}
-
-.form-header p {
-    font-size: 13.5px;
-    color: var(--text-muted);
-    margin: 0;
-}
-
-.form-header p strong {
-    color: var(--text-primary);
-    font-weight: 700;
-}
-
-/* Form Grid */
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group-full {
-    grid-column: 1 / -1;
-}
+.form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.form-group { display: flex; flex-direction: column; }
+.form-group-full { grid-column: 1 / -1; }
 
 .form-group label {
     display: flex;
@@ -324,25 +247,11 @@
     margin-bottom: 8px;
 }
 
-.form-group label svg {
-    width: 15px;
-    height: 15px;
-    color: var(--text-muted);
-    flex-shrink: 0;
-}
+.form-group label svg { width: 15px; height: 15px; color: var(--text-muted); flex-shrink: 0; }
 
-.required {
-    color: var(--red);
-    font-weight: 700;
-}
+.required { color: var(--red); font-weight: 700; }
+.optional  { color: var(--text-muted); font-weight: 500; font-size: 12px; }
 
-.optional {
-    color: var(--text-muted);
-    font-weight: 500;
-    font-size: 12px;
-}
-
-/* Field Hint */
 .field-hint {
     display: flex;
     align-items: center;
@@ -353,13 +262,8 @@
     line-height: 1.4;
 }
 
-.field-hint svg {
-    width: 13px;
-    height: 13px;
-    flex-shrink: 0;
-}
+.field-hint svg { width: 13px; height: 13px; flex-shrink: 0; }
 
-/* Form Actions */
 .form-actions {
     display: flex;
     gap: 12px;
@@ -369,11 +273,21 @@
     border-top: 1px solid var(--border);
 }
 
-/* Responsive */
-@media (max-width: 640px) {
-    .form-grid {
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .penyewa-grid {
         grid-template-columns: 1fr;
     }
+
+    .penyewa-card:hover { transform: none; }
+
+    .form-card { padding: 20px 16px 24px; }
+}
+
+@media (max-width: 640px) {
+    .form-grid { grid-template-columns: 1fr; }
 
     .form-actions {
         flex-direction: column-reverse;

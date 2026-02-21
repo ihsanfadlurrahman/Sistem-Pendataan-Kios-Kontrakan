@@ -357,7 +357,343 @@
     gap: 14px;
     margin: 28px 0 20px;
 }
+/* ═══════════════════════════════════════════════
+   LAPORAN KEUANGAN
+═══════════════════════════════════════════════ */
+.laporan-wrapper {
+    font-family: "DM Sans", sans-serif;
+    padding: 8px 4px;
+    max-width: 1100px;
+}
 
+.laporan-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 28px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.laporan-title-block h4 {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 4px 0;
+    letter-spacing: -0.5px;
+}
+
+.laporan-title-block p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 0;
+    font-weight: 500;
+}
+
+.btn-export {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13.5px;
+    box-shadow: 0 4px 14px rgba(22,163,74,0.35);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-export:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(22,163,74,0.45);
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-export svg { width: 16px; height: 16px; }
+
+.filter-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 18px 22px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    box-shadow: var(--shadow-sm);
+}
+
+.filter-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.filter-card input[type="number"] {
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 8px 14px;
+    font-size: 14px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: var(--bg-elevated);
+    transition: all 0.2s;
+    outline: none;
+    width: 100px;
+}
+
+.filter-card input[name="bulan"] { width: 80px; }
+.filter-card input[name="tahun"] { width: 100px; }
+
+.filter-card input[type="number"]:focus {
+    border-color: var(--blue);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(37,130,246,0.1);
+}
+
+.btn-filter {
+    background: var(--text-primary);
+    color: #fff;
+    border: none;
+    padding: 9px 20px;
+    border-radius: var(--radius-md);
+    font-size: 13.5px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-filter:hover {
+    background: #1e293b;
+    transform: translateY(-1px);
+}
+
+/* Summary Cards */
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.summary-card {
+    border-radius: var(--radius-lg);
+    padding: 22px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.summary-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-pemasukan  { background: linear-gradient(135deg, #f0fdf4, #dcfce7); border: 1.5px solid #bbf7d0; }
+.card-pengeluaran { background: linear-gradient(135deg, #fff1f2, #fee2e2); border: 1.5px solid #fecaca; }
+.card-laba       { background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 1.5px solid #bfdbfe; }
+
+.card-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.icon-green { background: rgba(22,163,74,0.15); }
+.icon-red   { background: rgba(220,38,38,0.15); }
+.icon-blue  { background: rgba(37,99,235,0.15); }
+.card-icon svg { width: 18px; height: 18px; }
+
+.summary-card .card-label {
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    margin-bottom: 6px;
+}
+
+.card-pemasukan .card-label  { color: #15803d; }
+.card-pengeluaran .card-label { color: #b91c1c; }
+.card-laba .card-label       { color: #1d4ed8; }
+
+.summary-card .card-amount {
+    font-family: "DM Mono", monospace;
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    line-height: 1;
+}
+
+.card-pemasukan .card-amount  { color: #14532d; }
+.card-pengeluaran .card-amount { color: #7f1d1d; }
+.card-laba .card-amount       { color: #1e3a8a; }
+
+/* Detail Tables */
+.detail-section {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow-sm);
+}
+
+.detail-header {
+    padding: 16px 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+.detail-header-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.dot-green { background: #16a34a; }
+.dot-red   { background: #dc2626; }
+
+.detail-header h5 { font-size: 14px; font-weight: 700; color: var(--text-primary); margin: 0; flex: 1; }
+
+.detail-header .count-badge {
+    background: var(--bg-elevated);
+    color: var(--text-secondary);
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+}
+
+.detail-table { width: 100%; border-collapse: collapse; }
+.detail-table thead tr { background: var(--bg-elevated); border-bottom: 1px solid var(--border); }
+.detail-table thead th {
+    padding: 10px 22px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+.detail-table thead th:last-child { text-align: right; }
+.detail-table tbody tr { border-bottom: 1px solid var(--border); transition: background 0.12s; }
+.detail-table tbody tr:last-child { border-bottom: none; }
+.detail-table tbody tr:hover { background: var(--bg-elevated); }
+.detail-table tbody td { padding: 13px 22px; font-size: 13.5px; color: var(--text-primary); }
+.detail-table tbody td:last-child {
+    text-align: right;
+    font-family: "DM Mono", monospace;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.amount-green { color: #15803d !important; }
+.amount-red   { color: #b91c1c !important; }
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 24px;
+    gap: 10px;
+}
+
+.empty-state svg { color: #cbd5e1; }
+.empty-state p { color: var(--text-muted); font-size: 13.5px; margin: 0; font-style: italic; }
+
+.section-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 28px 0 20px;
+}
+
+.section-divider span {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+}
+
+.section-divider::before,
+.section-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .laporan-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+    }
+
+    .laporan-title-block h4 { font-size: 20px; }
+
+    .btn-export {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .filter-card {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding: 16px;
+    }
+
+    .filter-card input[name="bulan"],
+    .filter-card input[name="tahun"] {
+        width: 100%;
+    }
+
+    .btn-filter {
+        width: 100%;
+        text-align: center;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .summary-card { padding: 18px 20px; }
+
+    .summary-card .card-amount { font-size: 18px; }
+
+    /* Detail table scroll */
+    .detail-section {
+        overflow-x: auto;
+    }
+
+    .detail-table thead th,
+    .detail-table tbody td {
+        padding: 10px 14px;
+        font-size: 12.5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .summary-grid { grid-template-columns: 1fr; }
+}
 .section-divider span {
     font-size: 11px;
     font-weight: 700;
