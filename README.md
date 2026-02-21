@@ -1,160 +1,190 @@
-<h1 align="center">🏢 Property Management System</h1>
-<h3 align="center">Sistem Pendataan Kios & Kontrakan</h3>
+# Sistem Pendataan Kios & Kontrakan
 
-🚀 Web-Based Rental & Financial Management System
+> 🇮🇩 Bahasa Indonesia | 🇬🇧 [English](#english-version)
 
-⚙️ Built with Laravel 10
+Aplikasi web berbasis Laravel untuk mengelola data sewa kios dan kontrakan, pembayaran, pengeluaran, dan laporan keuangan.
 
-📊 Status: Still Developed
+![Laravel](https://img.shields.io/badge/Laravel-11.x-FF2D20?style=flat&logo=laravel&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?style=flat&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat&logo=mysql&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat)
 
-<p align="center"> <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="250"> </p>
+---
 
-📌 Overview
-Property Management System adalah aplikasi web berbasis Laravel yang dirancang untuk membantu pengelolaan:
-- 🏬 Kios
-- 🏠 Kontrakan
-- 👤 Penyewa
-- 📄 Sewa
-- 💰 Pembayaran
-- 📉 Pengeluaran
-- 📊 Laporan Keuangan
+## Fitur
 
-Sistem ini dibuat untuk kebutuhan manajemen properti skala kecil–menengah dan dirancang dengan validasi logika bisnis yang realistis.
+- **Manajemen Unit** — Kelola data kios dan kontrakan beserta harga sewa
+- **Manajemen Penyewa** — Data penyewa aktif dan riwayat sewa
+- **Kontrak Sewa** — Buat sewa baru dengan pembayaran DP atau langsung lunas, perpanjang sewa, refund booking
+- **Pembayaran** — Riwayat seluruh transaksi pembayaran per bulan
+- **Pengeluaran** — Catat pengeluaran operasional per kategori
+- **Laporan Keuangan** — Rekap pemasukan & pengeluaran bulanan dengan export PDF
+- **Responsif** — Tampilan mobile-friendly
 
-🔐 Authentication
-- Secure login system
-- Middleware-based route protection
+## Tech Stack
 
-🏠 Unit Management
-- CRUD Unit
-- Status otomatis (Kosong / Disewa)
-- Validasi 1 unit hanya boleh memiliki 1 sewa aktif
-- Tampilan berbasis card
-- Icon berdasarkan tipe (Kontrakan / Kios)
-- Warna unit berdasarkan kepemilikan (Pink / Biru)
+- **Backend** — Laravel 11, PHP 8.2+
+- **Frontend** — Blade, CSS custom, vanilla JavaScript
+- **Database** — MySQL 8.0
+- **PDF** — barryvdh/laravel-dompdf
+- **Server lokal** — Laragon
 
-👤 Penyewa Management
-- CRUD Penyewa
-- 1 Penyewa dapat menyewa lebih dari 1 unit
-- Tampilan unit aktif langsung di card penyewa
+## Cara Install
 
-📄 Sewa Management
-- Status otomatis "Aktif" saat create
-- Tombol "Selesai" tanpa perlu edit
-- Otomatis mengosongkan unit saat sewa selesai
-- Validasi bisnis untuk mencegah konflik unit
+### Prasyarat
+- PHP >= 8.2
+- Composer
+- MySQL
+- Node.js (opsional, untuk asset)
 
-💰 Pembayaran
-- CRUD Pembayaran
-- Anti double pembayaran dalam bulan yang sama
-- Hanya dapat membayar sewa aktif
-- Status otomatis "Lunas"
-- Relasi langsung ke penyewa & unit
+### Langkah Instalasi
 
-📉 Pengeluaran
-- CRUD Pengeluaran
-- Kategori (Listrik, Air, Perbaikan, dll)
-- Tracking pengeluaran bulanan
-- Timestamps untuk audit trail
+**1. Clone repository**
+```bash
+git clone https://github.com/ihsanfadlurrahman/Sistem-Pendataan-Kios-Kontrakan.git
+cd Sistem-Pendataan-Kios-Kontrakan
+```
 
-📊 Laporan Keuangan
-
-- Filter berdasarkan bulan & tahun  
-- Perhitungan:
-    - Total pemasukan
-    - Total pengeluaran
-    - Laba / rugi
-- Detail transaksi
-- Export laporan ke PDF
-
-<!-- 🧠 Business Logic Implemented
-
-1 Unit = Maksimal 1 Sewa Aktif
-
-1 Penyewa = Bisa memiliki banyak sewa
-
-Unit otomatis kosong saat sewa selesai
-
-Pembayaran tidak boleh duplikat dalam bulan yang sama
-
-Laba bersih dihitung otomatis dari pemasukan - pengeluaran
-
-🛠 Tech Stack
-
-Laravel 10
-
-Blade Template Engine
-
-Eloquent ORM
-
-MySQL
-
-DOMPDF (PDF Export)
-
-RESTful Resource Controller
-
-📂 Main Modules
-
-- Unit
-- Penyewa
-- Sewa
-- Pembayaran
-- Pengeluaran
-- Laporan
-
-Relasi Database
-
-Penyewa → hasMany → Sewa
-
-Unit → hasMany → Sewa
-
-Sewa → hasMany → Pembayaran
-
-Pembayaran → belongsTo → Sewa
-
-📈 Development Status
-
-🚧 UI Improvements Ongoing
-🚧 Feature Enhancement in Progress
-
-Planned Improvements
-
-Dashboard charts
-
-Soft delete implementation
-
-Role & permission system
-
-Excel export
-
-Hosting & deployment
-
-SaaS-style UI enhancement
-
-🎯 Project Purpose
-
-Project ini dibuat untuk:
-
-Membantu manajemen properti keluarga
-
-Mengimplementasikan Laravel dalam skenario real-world
-
-Melatih arsitektur sistem & validasi bisnis
-
-Portfolio backend development -->
-
-<!-- ⚙️ Installation
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
-
+**2. Install dependencies**
+```bash
 composer install
+```
+
+**3. Buat file `.env`**
+```bash
 cp .env.example .env
-php artisan key:generate -->
-<!-- 
-# Setup database
+```
 
+**4. Generate app key**
+```bash
+php artisan key:generate
+```
+
+**5. Konfigurasi database di `.env`**
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nama_database_kamu
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+**6. Jalankan migration**
+```bash
 php artisan migrate
+```
 
-php artisan serve -->
+**7. Jalankan aplikasi**
+```bash
+php artisan serve
+```
 
-This project is open-sourced for educational and portfolio purposes.
+Buka browser dan akses `http://localhost:8000`
+
+## Struktur Database
+
+| Tabel | Keterangan |
+|---|---|
+| `users` | Data akun login |
+| `units` | Data kios dan kontrakan |
+| `penyewas` | Data penyewa |
+| `sewas` | Kontrak sewa |
+| `pembayarans` | Riwayat pembayaran |
+| `pengeluarans` | Data pengeluaran operasional |
+
+## Lisensi
+
+Proyek ini dilisensikan di bawah [MIT License](LICENSE).
+
+---
+
+## English Version
+
+A Laravel-based web application to manage kiosk and boarding house rental data, payments, expenses, and financial reports.
+
+## Features
+
+- **Unit Management** — Manage kiosk and boarding house data with rental prices
+- **Tenant Management** — Active tenants and rental history
+- **Rental Contracts** — Create new rentals with DP or full payment, extend contracts, refund bookings
+- **Payments** — Complete payment transaction history filtered by month
+- **Expenses** — Record operational expenses by category
+- **Financial Reports** — Monthly income & expense summary with PDF export
+- **Responsive** — Mobile-friendly interface
+
+## Tech Stack
+
+- **Backend** — Laravel 11, PHP 8.2+
+- **Frontend** — Blade, custom CSS, vanilla JavaScript
+- **Database** — MySQL 8.0
+- **PDF** — barryvdh/laravel-dompdf
+- **Local server** — Laragon
+
+## Installation
+
+### Requirements
+- PHP >= 8.2
+- Composer
+- MySQL
+- Node.js (optional, for assets)
+
+### Steps
+
+**1. Clone the repository**
+```bash
+git clone https://github.com/ihsanfadlurrahman/Sistem-Pendataan-Kios-Kontrakan.git
+cd Sistem-Pendataan-Kios-Kontrakan
+```
+
+**2. Install dependencies**
+```bash
+composer install
+```
+
+**3. Create `.env` file**
+```bash
+cp .env.example .env
+```
+
+**4. Generate app key**
+```bash
+php artisan key:generate
+```
+
+**5. Configure database in `.env`**
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database_name
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+**6. Run migrations**
+```bash
+php artisan migrate
+```
+
+**7. Start the application**
+```bash
+php artisan serve
+```
+
+Open your browser and go to `http://localhost:8000`
+
+## Database Structure
+
+| Table | Description |
+|---|---|
+| `users` | Login account data |
+| `units` | Kiosk and boarding house data |
+| `penyewas` | Tenant data |
+| `sewas` | Rental contracts |
+| `pembayarans` | Payment history |
+| `pengeluarans` | Operational expense data |
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
