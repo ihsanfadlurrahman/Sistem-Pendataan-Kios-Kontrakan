@@ -9,17 +9,28 @@ class Pembayaran extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id';
-
-    protected $table = 'pembayarans'; // Sesuaikan dengan nama tabel
+    protected $table = 'pembayarans';
 
     protected $fillable = [
         'sewa_id',
-        'bulan',
-        'tanggal_bayar',
+        'tipe',
         'jumlah',
+        'periode',
+        'jatuh_tempo',
+        'tanggal_bayar',
         'status',
+        'is_refunded',
+        'tanggal_refund',
     ];
+
+    protected $casts = [
+        'is_refunded'    => 'boolean',
+        'tanggal_bayar'  => 'date',
+        'jatuh_tempo'    => 'date',
+        'tanggal_refund' => 'date',
+        'periode'        => 'date',
+    ];
+
     public function sewa()
     {
         return $this->belongsTo(Sewa::class);

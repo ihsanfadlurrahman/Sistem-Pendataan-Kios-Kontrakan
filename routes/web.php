@@ -43,7 +43,13 @@ Route::resource('units', UnitController::class)->middleware('auth');;
 Route::resource('penyewa', PenyewaController::class)->middleware('auth');;
 
 // Sewa
-Route::resource('sewa', SewaController::class)->middleware('auth');;
+Route::resource('sewa', SewaController::class)->middleware('auth');
+
+Route::patch('sewa/{sewa}/bayar', [SewaController::class, 'bayar'])
+    ->middleware('auth')
+    ->name('sewa.bayar');
+Route::patch('/sewa/{sewa}/refund', [SewaController::class, 'refund'])->name('sewa.refund');
+Route::patch('sewa/{sewa}/perpanjang', [SewaController::class, 'perpanjang'])->name('sewa.perpanjang');
 Route::patch('sewa/{sewa}/selesai', [SewaController::class, 'selesai'])
     ->middleware('auth')
     ->name('sewa.selesai');

@@ -20,14 +20,14 @@
     - Export PDF (Terealisasikan)
 
 - CSS dipisah per fitur (contoh: unit.css), bukan digabung semua di style.css. (Terealisasikan)
-- Pembayaran: Unit kios di hitung /tahun, Unit kontrakan /bulan
+- Pembayaran: Unit kios di hitung /tahun, Unit kontrakan /bulan (Terealisasikan)
 - Field input status unit masih bisa dipilih, harus otomatis terisi kosong. (Terealisasikan)
-- Pada saat menambahkan pembayaran, status otomatis terisi belum lunas.
-- Tambahkan tombol lunas pada pembayaran dan status berubah jadi lunas (edit tetap ada).
-- Pada edit unit, status unit yang disewa tidak bisa diubah sampai status sewanya selesai.
+- Pada saat menambahkan pembayaran, status otomatis terisi belum lunas. (Dibatalkan)
+- Tambahkan tombol lunas pada pembayaran dan status berubah jadi lunas (edit tetap ada). (Dibatalkan)
+- Pada edit unit, status unit yang disewa tidak bisa diubah sampai status sewanya selesai. (Terealisasikan)
 - Tambahkan filter tanggal mulai dan tanggal selesai pada sewa.
 - Pada sewa, di tombol aksi nya jika masih aktif hanya menampilkan tombol edit dan selesai.
-    jika sudah selesai tombol aksi hanya menampilkan tombol hapus.
-- Sistem pembayaran masih ada yang perlu diperbaiki (belum tau yang mana).
-- Jika status unit masih disewa, unit tidak bisa dihapus.
+    jika sudah selesai tombol aksi hanya menampilkan tombol hapus. (Terealisasikan)
+- Sistem pembayaran masih ada yang perlu diperbaiki (belum tau yang mana). (Terealisasikan) > Sistem pembayaran otomatis terisi berbarengan dengan penambahan sewa
+- Jika status unit masih disewa, unit tidak bisa dihapus. (Terealisasikan)
 - Dalam data unit, tambahkan filter kepemilikan.

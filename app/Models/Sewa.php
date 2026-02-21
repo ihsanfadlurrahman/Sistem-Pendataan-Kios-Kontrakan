@@ -15,8 +15,11 @@ class Sewa extends Model
     protected $fillable = [
         'unit_id',
         'penyewa_id',
+        'nama_toko',
         'tanggal_mulai',
         'tanggal_selesai',
+        'harga_sewa',
+        'total_dibayar',
         'status'
     ];
     public function unit()

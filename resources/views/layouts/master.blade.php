@@ -39,17 +39,23 @@
         <span id="clockText"></span>
     </div>
 
+    <script src="{{ asset('assets/js/script.js') }}"></script>
+
     <script>
         // ─── Real-time Clock ───────────────────────────
         function updateClock() {
             const now = new Date();
-            const days   = ['Min','Sen','Sel','Rab','Kam','Jum','Sab'];
-            const months = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
-            const d     = days[now.getDay()];
-            const date  = now.getDate();
+            const days = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+            const d = days[now.getDay()];
+            const date = now.getDate();
             const month = months[now.getMonth()];
-            const year  = now.getFullYear();
-            const time  = now.toLocaleTimeString('id-ID', { hour:'2-digit', minute:'2-digit', second:'2-digit' });
+            const year = now.getFullYear();
+            const time = now.toLocaleTimeString('id-ID', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
             document.getElementById('clockText').innerText = `${d}, ${date} ${month} ${year}  ${time}`;
         }
         setInterval(updateClock, 1000);
@@ -57,7 +63,8 @@
 
         // ─── Draggable Clock ───────────────────────────
         const clock = document.getElementById('floatingClock');
-        let isDragging = false, offsetX, offsetY;
+        let isDragging = false,
+            offsetX, offsetY;
 
         clock.addEventListener('mousedown', function(e) {
             isDragging = true;
@@ -68,14 +75,16 @@
         document.addEventListener('mousemove', function(e) {
             if (!isDragging) return;
             clock.style.left = (e.clientX - offsetX) + 'px';
-            clock.style.top  = (e.clientY - offsetY) + 'px';
+            clock.style.top = (e.clientY - offsetY) + 'px';
         });
-        document.addEventListener('mouseup', () => { isDragging = false; });
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
 
         // ─── Sidebar Toggle (Mobile) ──────────────────
-        const sidebar        = document.querySelector('.sidebar');
-        const overlay        = document.getElementById('sidebarOverlay');
-        const hamburgerBtn   = document.getElementById('hamburgerBtn');
+        const sidebar = document.querySelector('.sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
 
         function openSidebar() {
             sidebar.classList.add('open');
@@ -118,7 +127,6 @@
     </script>
 
     @stack('scripts')
-    <script src="{{ asset('assets/js/script.js') }}"></script>
 </body>
 
 </html>

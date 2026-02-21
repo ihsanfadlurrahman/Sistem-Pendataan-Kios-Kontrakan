@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('sewas', function (Blueprint $table) {
             $table->id();
+
             $table->foreignId('unit_id')->constrained('units')->cascadeOnDelete();
             $table->foreignId('penyewa_id')->constrained('penyewas')->cascadeOnDelete();
-            $table->date('tanggal_mulai');
+            $table->string('nama_toko')->nullable();
+            $table->date('tanggal_mulai')->nullable();
             $table->date('tanggal_selesai')->nullable();
-            $table->enum('status', ['aktif', 'selesai'])->default('aktif');
+            $table->integer('harga_sewa');
+            $table->integer('total_dibayar')->default(0);
+            $table->enum('status', ['booking', 'aktif', 'selesai', 'batal'])->default('aktif');
             $table->timestamps();
         });
     }

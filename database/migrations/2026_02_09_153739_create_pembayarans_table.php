@@ -14,10 +14,21 @@ return new class extends Migration
         Schema::create('pembayarans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('sewa_id')->constrained('sewas')->cascadeOnDelete();
-            $table->date('bulan'); // contoh: 2025-01-01
+            
+            $table->enum('tipe', ['dp', 'pelunasan', 'sewa']);
+            // dp = uang awal
+            // pelunasan = sisa sebelum aktif
+            // sewa = pembayaran periode berikutnya
+
+            $table->date('periode')->nullable();
+            // untuk sewa bulanan/tahunan (misal 2025-01-01)
+
             $table->integer('jumlah');
-            $table->enum('status', ['lunas', 'nunggak'])->default('nunggak');
+            $table->date('jatuh_tempo')->nullable();
             $table->date('tanggal_bayar')->nullable();
+            $table->enum('status', ['belum_lunas', 'lunas'])->default('belum_lunas');
+            $table->boolean('is_refunded')->default(false);
+            $table->date('tanggal_refund')->nullable();
             $table->timestamps();
         });
     }

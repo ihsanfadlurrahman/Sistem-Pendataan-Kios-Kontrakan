@@ -14,41 +14,39 @@ class LaporanController extends Controller
         $bulan = $request->bulan ?? date('m');
         $tahun = $request->tahun ?? date('Y');
 
-        // Pemasukan
-        $pemasukan = Pembayaran::whereMonth('bulan', $bulan)
-            ->whereYear('bulan', $tahun)
+        $pemasukan = Pembayaran::with(['sewa.penyewa', 'sewa.unit'])
+            ->whereMonth('tanggal_bayar', $bulan)
+            ->whereYear('tanggal_bayar', $tahun)
             ->where('status', 'lunas')
+            ->where('is_refunded', false)
             ->get();
 
         $totalPemasukan = $pemasukan->sum('jumlah');
 
-        // Pengeluaran
         $pengeluaran = Pengeluaran::whereMonth('tanggal', $bulan)
             ->whereYear('tanggal', $tahun)
             ->get();
 
         $totalPengeluaran = $pengeluaran->sum('jumlah');
-
-        $laba = $totalPemasukan - $totalPengeluaran;
+        $laba             = $totalPemasukan - $totalPengeluaran;
 
         return view('laporan.index', compact(
-            'pemasukan',
-            'pengeluaran',
-            'totalPemasukan',
-            'totalPengeluaran',
-            'laba',
-            'bulan',
-            'tahun'
+            'pemasukan', 'pengeluaran',
+            'totalPemasukan', 'totalPengeluaran',
+            'laba', 'bulan', 'tahun'
         ));
     }
+
     public function exportPdf(Request $request)
     {
         $bulan = $request->bulan ?? date('m');
         $tahun = $request->tahun ?? date('Y');
 
-        $pemasukan = Pembayaran::whereMonth('bulan', $bulan)
-            ->whereYear('bulan', $tahun)
+        $pemasukan = Pembayaran::with(['sewa.penyewa', 'sewa.unit'])
+            ->whereMonth('tanggal_bayar', $bulan)
+            ->whereYear('tanggal_bayar', $tahun)
             ->where('status', 'lunas')
+            ->where('is_refunded', false)
             ->get();
 
         $totalPemasukan = $pemasukan->sum('jumlah');
@@ -58,16 +56,12 @@ class LaporanController extends Controller
             ->get();
 
         $totalPengeluaran = $pengeluaran->sum('jumlah');
-        $laba = $totalPemasukan - $totalPengeluaran;
+        $laba             = $totalPemasukan - $totalPengeluaran;
 
         $pdf = Pdf::loadView('laporan.pdf', compact(
-            'pemasukan',
-            'pengeluaran',
-            'totalPemasukan',
-            'totalPengeluaran',
-            'laba',
-            'bulan',
-            'tahun'
+            'pemasukan', 'pengeluaran',
+            'totalPemasukan', 'totalPengeluaran',
+            'laba', 'bulan', 'tahun'
         ));
 
         return $pdf->download("laporan-$bulan-$tahun.pdf");
