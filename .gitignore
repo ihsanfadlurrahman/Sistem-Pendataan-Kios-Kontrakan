@@ -17,3 +17,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+ide-fiturlain.txt
+database/seeders/UnitSeeder.php
